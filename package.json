@@ -19,7 +19,8 @@
     "dependencies": {
         "allotment": "^1.20.4",
         "react": "^19.2.3",
-        "react-dom": "^19.2.3"
+        "react-dom": "^19.2.3",
+        "zustand": "^5.0.9"
     },
     "devDependencies": {
         "@babel/core": "^7.28.5",
@@ -28,6 +29,7 @@
         "@babel/preset-typescript": "^7.28.5",
         "@commitlint/cli": "^20.2.0",
         "@commitlint/config-conventional": "^20.2.0",
+        "@tailwindcss/postcss": "^4.1.18",
         "@types/node": "^25.0.2",
         "@types/react": "^19.2.7",
         "@types/react-dom": "^19.2.3",
@@ -42,7 +44,6 @@
         "html-webpack-plugin": "^5.6.5",
         "husky": "^9.1.7",
         "lint-staged": "^16.2.7",
-        "@tailwindcss/postcss": "^4.1.18",
         "postcss": "^8.5.6",
         "postcss-loader": "^8.1.1",
         "prettier": "^3.7.4",

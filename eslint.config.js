@@ -13,6 +13,7 @@ export default [
         rules: {
             ...reactPlugin.configs.recommended.rules,
             ...reactHooks.configs.recommended.rules,
+            '@typescript-eslint/no-explicit-any': 'off',
             'react/react-in-jsx-scope': 'off' // Not needed in modern React
         },
         settings: {
