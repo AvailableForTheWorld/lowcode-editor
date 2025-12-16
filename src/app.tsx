@@ -1,4 +1,6 @@
+import LowcodeEditor from './editor'
+
 const App = () => {
-    return <div>Hello World</div>
+    return <LowcodeEditor />
 }
 export default App
