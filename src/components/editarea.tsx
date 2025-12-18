@@ -1,46 +1,33 @@
-import { useEffect } from 'react'
-import { useComponentsStore } from '../stores/components'
-import { useShallow } from 'zustand/react/shallow'
+import React from 'react'
+import { type Component, useComponentsStore } from '../stores/components'
+import { useComponentConfigStore } from '../stores/component-config'
 
 export function EditArea() {
-    const { components, addComponent, deleteComponent, updateComponentProps } = useComponentsStore(
-        useShallow(state => ({
-            components: state.components,
-            addComponent: state.addComponent,
-            deleteComponent: state.deleteComponent,
-            updateComponentProps: state.updateComponentProps
-        }))
-    )
-    useEffect(() => {
-        addComponent(
-            {
-                id: 222,
-                name: 'Container',
-                props: {},
-                children: []
-            },
-            1
-        )
-        addComponent(
-            {
-                id: 333,
-                name: 'Button',
-                props: {},
-                children: []
-            },
-            222
-        )
+    const { components } = useComponentsStore()
+    const { componentConfig } = useComponentConfigStore()
 
-        const timer = window.setTimeout(() => {
-            deleteComponent(333)
-            updateComponentProps(222, { title: 'asdf' })
-        }, 2000)
+    function renderComponents(components: Component[]): React.ReactNode {
+        return components.map((component: Component) => {
+            const config = componentConfig?.[component.name]
+            if (!config?.component) return null
+            return React.createElement(
+                config.component,
+                {
+                    key: component.id,
+                    id: component.id,
+                    name: component.name,
+                    ...config.defaultProps,
+                    ...component.props
+                },
+                renderComponents(component.children || [])
+            )
+        })
+    }
 
-        return () => window.clearTimeout(timer)
-    }, [addComponent, deleteComponent, updateComponentProps])
     return (
         <div>
-            <pre>{JSON.stringify(components, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(components, null, 2)}</pre> */}
+            {renderComponents(components)}
         </div>
     )
 }

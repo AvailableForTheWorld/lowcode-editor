@@ -31,6 +31,11 @@ export const useComponentsStore = create<State & Action>((set, get) => ({
         set(state => {
             if (parentId) {
                 const parentComponent = getComponentById(parentId, state.components)
+                console.log(
+                    '%c [ parentComponent ]-34',
+                    'font-size:13px; background:pink; color:#bf2c9f;',
+                    parentComponent
+                )
                 if (parentComponent) {
                     if (parentComponent.children) {
                         parentComponent.children.push(component)

@@ -1,4 +1,4 @@
 export * from './header'
-export * from './material'
+export * from './materials'
 export * from './editarea'
 export * from './setting'

@@ -4,7 +4,7 @@ import { Header, Material, EditArea, Setting } from '../components'
 
 export default function LowcodeEditor() {
     return (
-        <div className="h-[100vh] flex flex-col">
+        <div className="h-screen flex flex-col">
             <div className="h-22">
                 <Header></Header>
             </div>
